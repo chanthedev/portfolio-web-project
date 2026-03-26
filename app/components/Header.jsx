@@ -58,13 +58,6 @@ const Header = ({isDarkMode}) => {
 
             <div className='flex items-center gap-3 text-gray-600 dark:text-white/70'>
               <svg className='w-5 h-5 shrink-0 fill-current' viewBox='0 0 24 24'>
-                <path d='M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.57 3.58 1 1 0 01-.25 1.02l-2.2 2.19z'/>
-              </svg>
-              <span className='font-Ovo'>+82 10 6749 2434</span>
-            </div>
-
-            <div className='flex items-center gap-3 text-gray-600 dark:text-white/70'>
-              <svg className='w-5 h-5 shrink-0 fill-current' viewBox='0 0 24 24'>
                 <path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z'/>
               </svg>
               <span className='font-Ovo'>Busan, South Korea</span>
