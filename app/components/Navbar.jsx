@@ -41,6 +41,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         rounded-full px-12 py-3 absolute left-1/2 -translate-x-1/2 translate-y-1
         ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"} `}>
             <li><a className='font-Ovo' href="#top">Home</a></li>
+            <li><a className='font-Ovo' href="#about">About</a></li>
             <li><a className='font-Ovo' href="#contact">Contact</a></li>
         </ul>
 
@@ -64,6 +65,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         </div>
 
           <li><a className='font-Ovo' onClick={closeMenu} href="#top">Home</a></li>
+          <li><a className='font-Ovo' onClick={closeMenu} href="#about">About</a></li>
           <li><a className='font-Ovo' onClick={closeMenu} href="#contact">Contact</a></li>
       </ul>
       </nav>

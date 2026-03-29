@@ -113,9 +113,9 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Kyung Hee University (B.A.)' },
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Korean (Native) · English (Intermediate)' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Certifications', description: 'AWS SAA · SAP · DevOps · and more' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Kyung Hee Univ. B.A. International Relations · AI School (Feb 2026) · Altor Mentoring' },
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Korean (Native) · English (TOEIC 955) · Indonesian (Intermediate)' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Certifications', description: 'AWS CCP (Achieved) · IPE Written ✓ · AWS SAA-C03 (In Progress)' },
 ];
 
 export const certData = [

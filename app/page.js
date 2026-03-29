@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import About from "./components/About";
 import ChatWidget from "./components/ChatWidget";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
@@ -32,6 +33,7 @@ export default function Home() {
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
       <Header isDarkMode={isDarkMode}/>
+      <About isDarkMode={isDarkMode}/>
       <Contact isDarkMode={isDarkMode}/>
       <ChatWidget isDarkMode={isDarkMode}/>
 </>
