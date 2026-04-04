@@ -1,6 +1,6 @@
-import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
 const SYSTEM_PROMPT = `You are a helpful assistant for Byeongchan Hong's portfolio website.
 Answer questions about him based on the following information. Be concise and friendly.
@@ -36,15 +36,31 @@ If asked something you don't know about him, say you don't have that information
 Answer in the same language the user writes in (Korean or English).`
 
 export async function POST(request) {
-  const { messages } = await request.json()
+  try {
+    const { messages } = await request.json()
 
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5',
-    max_tokens: 1024,
-    system: SYSTEM_PROMPT,
-    messages,
-  })
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-2.5-flash',
+      systemInstruction: SYSTEM_PROMPT,
+    })
 
-  const text = response.content.find(b => b.type === 'text')?.text ?? ''
-  return Response.json({ text })
+    // Anthropic 형식({ role, content }) → Gemini 형식({ role, parts }) 변환
+    // Gemini는 'assistant' 대신 'model' 사용
+    const history = messages.slice(0, -1).map(m => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }))
+
+    const lastMessage = messages[messages.length - 1]
+
+    const chat = model.startChat({ history })
+    const result = await chat.sendMessage(lastMessage.content)
+    const text = result.response.text()
+
+    console.log('[INFO] Gemini response received')
+    return Response.json({ text })
+  } catch (e) {
+    console.error('[ERROR] /api/chat:', e.message)
+    return Response.json({ text: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.' }, { status: 500 })
+  }
 }

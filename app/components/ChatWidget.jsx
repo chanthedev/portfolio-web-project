@@ -28,13 +28,13 @@ const ChatWidget = ({ isDarkMode }) => {
     setIsLoading(true)
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch('http://127.0.0.1:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: apiMessages }),
       })
       const data = await res.json()
-      setMessages(prev => [...prev, { role: 'assistant', content: data.text }])
+      setMessages(prev => [...prev, { role: 'assistant', content: data.reply }])
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: 'Something went wrong. Please try again.' }])
     } finally {
@@ -76,6 +76,10 @@ const ChatWidget = ({ isDarkMode }) => {
 
           {/* Messages */}
           <div className='flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3'>
+            <div className={`text-xs px-3 py-2 rounded-xl text-center leading-relaxed
+              ${isDarkMode ? 'bg-white/5 text-white/50' : 'bg-gray-50 text-gray-500'}`}>
+              이 채팅 기능은 Gemini API를 활용하여, 제 이력서를 기반으로 질문에 답변하도록 구현했습니다.
+            </div>
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm leading-relaxed
