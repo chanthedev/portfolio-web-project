@@ -20,7 +20,6 @@ const ChatWidget = ({ isDarkMode }) => {
     if (!text || isLoading) return
 
     const userMessage = { role: 'user', content: text }
-    const next = [...messages.filter(m => m.role !== 'assistant' || messages.indexOf(m) !== 0), userMessage]
     const apiMessages = [...messages.slice(1), userMessage] // skip the initial greeting
 
     setMessages(prev => [...prev, userMessage])
@@ -28,7 +27,7 @@ const ChatWidget = ({ isDarkMode }) => {
     setIsLoading(true)
 
     try {
-      const res = await fetch('https://backend-fqus.onrender.com', {
+      const res = await fetch('https://backend-fqus.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: apiMessages }),
