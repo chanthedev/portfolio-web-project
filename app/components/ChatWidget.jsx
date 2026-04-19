@@ -27,7 +27,7 @@ const ChatWidget = ({ isDarkMode }) => {
     setIsLoading(true)
 
     try {
-      const res = await fetch('https://backend-livid-seven-50.vercel.app/api/chat', {
+      const res = await fetch('https://api.chanthedev.cloud/sendMessage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: apiMessages }),
