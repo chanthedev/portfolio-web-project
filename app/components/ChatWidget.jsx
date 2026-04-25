@@ -9,14 +9,14 @@ const ChatWidget = ({ isDarkMode }) => {
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [suggestedQuestions, setSuggestedQuestions] = useState([])
   const bottomRef = useRef(null)
 
   useEffect(() => {
     if (isOpen) bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, isOpen])
 
-  const send = async () => {
-    const text = input.trim()
+  const sendMessage = async (text) => {
     if (!text || isLoading) return
 
     const userMessage = { role: 'user', content: text }
@@ -25,6 +25,7 @@ const ChatWidget = ({ isDarkMode }) => {
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setIsLoading(true)
+    setSuggestedQuestions([])
 
     try {
       const res = await fetch('/api/chat', {
@@ -33,13 +34,17 @@ const ChatWidget = ({ isDarkMode }) => {
         body: JSON.stringify({ messages: apiMessages }),
       })
       const data = await res.json()
-      setMessages(prev => [...prev, { role: 'assistant', content: data.reply }])
+      setMessages(prev => [...prev, { role: 'assistant', content: data.answer }])
+      setSuggestedQuestions(data.suggestedQuestions || [])
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: 'Something went wrong. Please try again.' }])
     } finally {
       setIsLoading(false)
     }
   }
+
+  const send = () => sendMessage(input.trim())
+  const handleSuggestedClick = (question) => sendMessage(question)
 
   const handleKey = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -101,6 +106,20 @@ const ChatWidget = ({ isDarkMode }) => {
                     <span className='w-1.5 h-1.5 rounded-full bg-current animate-bounce' style={{ animationDelay: '300ms' }}/>
                   </span>
                 </div>
+              </div>
+            )}
+            {!isLoading && suggestedQuestions.length > 0 && (
+              <div className='flex flex-col gap-1.5 mt-1'>
+                {suggestedQuestions.map((q, i) => (
+                  <button key={i}
+                    onClick={() => handleSuggestedClick(q)}
+                    className={`text-left text-xs px-3 py-2 rounded-xl border transition-colors
+                      ${isDarkMode
+                        ? 'border-white/20 text-white/70 hover:bg-white/10'
+                        : 'border-gray-200 text-gray-500 hover:bg-gray-50'}`}>
+                    {q}
+                  </button>
+                ))}
               </div>
             )}
             <div ref={bottomRef} />
