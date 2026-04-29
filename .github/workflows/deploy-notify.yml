@@ -1,0 +1,23 @@
+name: Deploy Notification
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord notification
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{
+                 "content": "🚀 **포트폴리오 배포 시작**",
+                 "embeds": [{
+                   "title": "${{ github.event.head_commit.message }}",
+                   "description": "Pushed by **${{ github.actor }}**",
+                   "color": 5814783,
+                   "url": "${{ github.event.head_commit.url }}"
+                 }]
+               }' \
+               ${{ secrets.DISCORD_WEBHOOK }}
