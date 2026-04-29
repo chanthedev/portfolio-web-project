@@ -73,13 +73,18 @@ export async function POST(request) {
       return Response.json({ error: 'Messages are required' }, { status: 400 })
     }
 
+    const lastMessage = messages[messages.length - 1]
+    if (!lastMessage?.content?.trim()) {
+      return Response.json({ error: 'Message content cannot be empty' }, { status: 400 })
+    }
+
     // 프론트 형식({ role, content }) → Gemini history 형식({ role, parts })
     const history = messages.slice(0, -1).map(m => ({
       role: m.role === 'assistant' ? 'model' : 'user',
       parts: [{ text: m.content }],
     }))
 
-    const lastInput = messages[messages.length - 1].content
+    const lastInput = lastMessage.content
     const hasKorean = /[가-힣]/.test(lastInput)
     const langInstruction = hasKorean
       ? '반드시 한국어로만 답변해라.'
