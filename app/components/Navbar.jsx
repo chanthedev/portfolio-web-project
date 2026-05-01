@@ -1,10 +1,14 @@
+'use client'
+
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from './ThemeProvider'
 
-const Navbar = ({isDarkMode, setIsDarkMode}) => {
+const Navbar = () => {
     
+    const { isDarkMode, setIsDarkMode } = useTheme();
     const [isScroll, setIsScroll] = useState(false)
     const sideMenuRef = useRef();
 
@@ -33,16 +37,17 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
       <nav className={`w-full fixed px-4 lg:px-6 xl:px-8 py-4 flex
       items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : ""}`}>
-        <a href="#top" className='font-Ovo text-xl font-semibold cursor-pointer mr-14'>
+        <Link href="/" className='font-Ovo text-xl font-semibold cursor-pointer mr-14'>
             chanthedev
-        </a>
+        </Link>
 
         <ul className={`hidden md:flex items-center gap-6 lg:gap-8
         rounded-full px-12 py-3 absolute left-1/2 -translate-x-1/2 translate-y-1
         ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"} `}>
-            <li><a className='font-Ovo' href="#top">Home</a></li>
-            <li><a className='font-Ovo' href="#about">About</a></li>
-            <li><a className='font-Ovo' href="#contact">Contact</a></li>
+            <li><Link className='font-Ovo' href="/">Home</Link></li>
+            <li><Link className='font-Ovo' href="/about">About</Link></li>
+            <li><Link className='font-Ovo' href="/projects">Projects</Link></li>
+            <li><Link className='font-Ovo' href="/contact">Contact</Link></li>
         </ul>
 
         <div className='flex items-center gap-3'>
@@ -64,9 +69,10 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
             cursor-pointer' />
         </div>
 
-          <li><a className='font-Ovo' onClick={closeMenu} href="#top">Home</a></li>
-          <li><a className='font-Ovo' onClick={closeMenu} href="#about">About</a></li>
-          <li><a className='font-Ovo' onClick={closeMenu} href="#contact">Contact</a></li>
+          <li><Link className='font-Ovo' onClick={closeMenu} href="/">Home</Link></li>
+          <li><Link className='font-Ovo' onClick={closeMenu} href="/about">About</Link></li>
+          <li><Link className='font-Ovo' onClick={closeMenu} href="/projects">Projects</Link></li>
+          <li><Link className='font-Ovo' onClick={closeMenu} href="/contact">Contact</Link></li>
       </ul>
       </nav>
     </>

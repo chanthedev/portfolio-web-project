@@ -1,41 +1,23 @@
-'use client'
-import { useEffect, useState } from "react";
-import About from "./components/About";
-import ChatWidget from "./components/ChatWidget";
-import Contact from "./components/Contact";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import HomeClient from "./components/HomeClient";
+
+export const metadata = {
+  title: "Home",
+  description: "클라우드 엔지니어 홍병찬의 포트폴리오입니다. AWS 자격증, AI 챗 기능, 프로젝트를 소개합니다.",
+  openGraph: {
+    title: "Byeongchan Hong - Cloud Engineer Portfolio",
+    description: "클라우드 엔지니어 홍병찬의 포트폴리오입니다. AWS 자격증, AI 챗 기능, 프로젝트를 소개합니다.",
+    url: "https://your-domain.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Byeongchan Hong",
+      }
+    ],
+  },
+};
 
 export default function Home() {
-
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  
-  useEffect(()=>{
-    if(localStorage.theme === 'dark' || (!('theme'in localStorage) && window.
-  matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDarkMode(true)
-    }else{
-      setIsDarkMode(false)
-    }
-  },[])
-
-  useEffect(()=>{
-    if(isDarkMode){
-    document.documentElement.classList.add('dark');
-    localStorage.theme = 'dark'; 
-  }else{
-    document.documentElement.classList.remove('dark');
-    localStorage.theme = '';
-  }
-},[isDarkMode])
-
-  return (
-    <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
-      <Header isDarkMode={isDarkMode}/>
-      <About isDarkMode={isDarkMode}/>
-      <Contact isDarkMode={isDarkMode}/>
-      <ChatWidget isDarkMode={isDarkMode}/>
-</>
-  );
+  return <HomeClient />;
 }

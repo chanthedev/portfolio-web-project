@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image';
 import { assets } from '@/assets/assets';
@@ -55,21 +57,11 @@ const About = ({ isDarkMode }) => {
   return (
     <motion.div
       id='about'
-      className='w-full px-[12%] py-10 scroll-mt-20'
+      className='w-full px-[12%] py-10 pt-24 scroll-mt-20'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-    >
-      {/* ── Section heading ── */}
-      <motion.h4
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className='text-center mb-2 text-lg font-Ovo'
-      >
-        Introduction
-      </motion.h4>
-      <motion.h2
+    >      <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
@@ -77,7 +69,6 @@ const About = ({ isDarkMode }) => {
       >
         About me
       </motion.h2>
-
       {/* ── Dashboard grid ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
