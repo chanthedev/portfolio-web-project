@@ -25,9 +25,28 @@ function Work() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}    
-        className='grid grid-cols-auto mt-10 gap-5 dark:text-black'
+        className='grid lg:grid-cols-[320px_1fr] grid-cols-1 mt-10 gap-5 dark:text-black'
       >
-        {/* Projects will be added here */}
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className='rounded-[32px] border border-slate-200 bg-white/80 p-6 shadow-[0_28px_60px_-30px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/80'
+        >
+          <p className='mb-3 text-xs uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400'>Portfolio Site</p>
+          <h3 className='mb-4 text-2xl font-bold'>chanthedev website</h3>
+          <p className='mb-5 text-sm leading-7 text-slate-600 dark:text-slate-300'>이 사이트는 제 포트폴리오 프로젝트로, 프론트엔드와 백엔드, AI 챗 기능을 함께 구현했습니다.</p>
+          <div className='space-y-3 text-sm'>
+            <p className='font-semibold text-slate-800 dark:text-slate-100'>적용 기술</p>
+            <ul className='space-y-2 text-slate-600 dark:text-slate-300'>
+              <li>Next.js / React</li>
+              <li>Tailwind CSS</li>
+              <li>Node.js / API 라우트</li>
+              <li>AI 챗/OpenAI 연동</li>
+            </ul>
+          </div>
+        </motion.div>
+
       </motion.div>
     </motion.div>
   )
