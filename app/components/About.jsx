@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image';
-import { assets } from '@/assets/assets';
+import { assets } from '../../assets/assets';
 import { motion } from "motion/react"
 
 const infoCards = [

@@ -20,6 +20,7 @@ export const metadata = {
   keywords: ["포트폴리오", "개발자", "클라우드", "AWS", "풀스택", "AI", "ChatGPT"],
   authors: [{ name: "Byeongchan Hong" }],
   creator: "Byeongchan Hong",
+  metadataBase: new URL('https://chanthedev.cloud'),
   openGraph: {
     title: "Byeongchan Hong - Cloud Engineer Portfolio",
     description: "클라우드 엔지니어 홍병찬의 포트폴리오. AWS 자격증, AI 챗 기능 구현.",

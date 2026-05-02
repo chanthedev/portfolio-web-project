@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Projects - Byeongchan Hong",
     description: "클라우드 엔지니어 홍병찬의 프로젝트 포트폴리오. 최신 작업물을 확인하세요.",
-    url: "/projects",
+    url: "https://chanthedev.cloud/projects",
     images: [
       {
         url: "/og-image.png",

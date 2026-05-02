@@ -1,0 +1,8 @@
+# chanthedev.cloud
+> AI 크롤러와 LLM을 위한 포트폴리오 사이트 정보
+
+## Pages
+- [Home](https://chanthedev.cloud/): 메인 소개 섹션과 AI 챗봇 기능을 제공합니다.
+- [About](https://chanthedev.cloud/about): 자기소개, 학력, 언어, 자격증 정보를 담고 있습니다.
+- [Projects](https://chanthedev.cloud/projects): 현재 포트폴리오 항목이 비어 있지만, 추후 프로젝트를 표시할 예정입니다.
+- [Contact](https://chanthedev.cloud/contact): 연락처 정보와 문의 폼을 제공합니다.

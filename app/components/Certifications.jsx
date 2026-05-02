@@ -1,4 +1,4 @@
-import { certData } from '@/assets/assets'
+import { certData } from '../../assets/assets'
 import { motion } from 'framer-motion'
 import React from 'react'
 

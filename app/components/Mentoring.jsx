@@ -1,4 +1,4 @@
-import { mentoringData } from '@/assets/assets'
+import { mentoringData } from '../../assets/assets'
 import { motion } from 'framer-motion'
 import React from 'react'
 

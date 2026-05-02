@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "About - Byeongchan Hong",
     description: "클라우드 엔지니어 홍병찬의 자기소개. 교육, 언어, 자격증 정보를 확인하세요.",
-    url: "/about",
+    url: "https://chanthedev.cloud/about",
     images: [
       {
         url: "/og-image.png",
